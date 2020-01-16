@@ -5,12 +5,12 @@ import os
 import requests
 
 def bot_login():
-	print("Loggin in...")
+	# print("Loggin in...")
 	r = praw.Reddit(username = config.username,
 			password = config.password,
 			client_id = config.client_id,
 			client_secret = config.client_secret,
-			user_agent = "The IOTA YourFriendlyIOTABOT by pmayall")
+			user_agent = "The IOTA YourFriendlyIOTABOT by Mark Petherbridge")
 	print("Logged in!")
 
 	return r
@@ -29,11 +29,11 @@ def run_bot(r, comments_replied_to):
 				print(str(comment.author) + " is not the commemt author -------------")
 
 				if "iota --define" in comment.body or "What is Iota" in comment.body or "what is Iota" in comment.body or "what is iota" in comment.body or "What is iota" in comment.body or "what is IOTA" in comment.body or "What is IOTA" in comment.body:
-					print("found one of the phrases ----------------")
+					# print("found one of the phrases ----------------")
 					comment.reply("IOTA is the revolutionary new CryptoCurrency built on Tangle (read: [Whitepaper](https://iota.org/IOTA_Whitepaper.pdf)). A blockless distributed ledger which is scalable, lightweight and for the first time ever makes it possible to transfer value without any fees. \n\n You can type `iota --buy` as a comment reply for information on buying IOTA")
 					comments_replied_to.append(comment.id)
 				elif "iota --buy" in comment.body or "how to buy iota" in comment.body.lower() or "where to buy iota" in comment.body.lower() or "how do i buy iota" in comment.body.lower():
-					print("second statement found ------------")
+					# print("second statement found ------------")
 					comment.reply("You can buy IOTA by visiting: [How to Buy IOTA](https://howtobuyiota.co.uk) \n\n *If this bot has fired incorrectly, please send me a message /u/pmayall. This bot is very new and is still a work in progress. Thank you for your understanding* \n\n[IOTA Dashboard](https://iota.guide/dashboard) | [Wiki](https://iota.guide/reddit-bot/wiki/)")
 					comments_replied_to.append(comment.id)
 				elif "iota --seed" in comment.body or "generate iota seed" in comment.body or "Generate Seed" in comment.body:
@@ -46,10 +46,10 @@ def run_bot(r, comments_replied_to):
 				with open ("comments_replied_to.txt", "a") as f:
 					f.write(comment.id + "\n")
 
-					print("added  " + str(comment.id)  + " id to text file")
+					# print("added  " + str(comment.id)  + " id to text file")
 
 
-	print ("Sleeping for 10 seconds...")
+	# print ("Sleeping for 10 seconds...")
 	#Sleep for 10 seconds...
 	time.sleep(10)
 
@@ -69,8 +69,8 @@ print (comments_replied_to)
 
 count = 0
 while (count < 5):
-   print ('The count is:', count)
+   # print ('The count is:', count)
    count = count + 1
    run_bot(r, comments_replied_to)
 
-print("Good bye!")
+# print("Good bye!")
